@@ -6,11 +6,10 @@
 <title>Leyla Zaim — Uzman Klinik Psikolog</title>
 <meta name="description" content="Uzman Klinik Psikolog Leyla Zaim — Nişantaşı, İstanbul. Bireysel terapi, çift terapisi, EMDR, travma, kaygı ve depresyon alanlarında danışmanlık." />
 
-<!-- Open Graph -->
 <meta property="og:title" content="Leyla Zaim — Uzman Klinik Psikolog" />
 <meta property="og:description" content="Nişantaşı, İstanbul · Bireysel · Çift · Aile · EMDR" />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="assets/leyla.jpg" />
+<meta property="og:image" content="leyla.jpg" />
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233A2040'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='18' font-weight='700' fill='%23B13B5B' text-anchor='middle'%3ELZ%3C/text%3E%3C/svg%3E" />
 
@@ -20,7 +19,6 @@
 
 <style>
   :root {
-    /* Active palette: plum-rose */
     --bg: #F3E6DE;
     --primary: #3A2040;
     --accent: #B13B5B;
@@ -45,99 +43,128 @@
     min-height: 100vh;
     min-height: 100dvh;
     overflow-x: hidden;
-  }
-  /* Lock to single viewport only when tall + wide enough */
-  @media (min-width: 861px) and (min-height: 820px) {
-    body { overflow: hidden; }
+    display: flex;
+    justify-content: center;
   }
 
   .page {
-    position: relative;
-    width: 100vw;
-    min-height: 100vh;
-    min-height: 100dvh;
-    display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    padding: clamp(18px, 2.5vw, 44px);
-    gap: clamp(20px, 3vw, 44px);
-  }
-  @media (min-width: 861px) and (min-height: 820px) {
-    .page { height: 100vh; height: 100dvh; min-height: 0; }
-  }
-
-  /* ---------- LEFT ---------- */
-  .left {
-    position: relative;
+    width: 100%;
+    max-width: 720px;
+    padding: clamp(32px, 5vh, 60px) clamp(20px, 4vw, 40px) clamp(40px, 6vh, 72px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: clamp(24px, 4vh, 56px) 0 clamp(24px, 4vh, 56px) clamp(8px, 1vw, 16px);
-    z-index: 2;
-    min-width: 0;
+    align-items: center;
+    text-align: center;
   }
 
+  /* Avatar */
+  .avatar {
+    width: clamp(140px, 22vw, 180px);
+    aspect-ratio: 3/4;
+    background: var(--accent-soft);
+    border-radius: 999px 999px 24px 24px;
+    overflow: hidden;
+    margin-bottom: clamp(24px, 4vh, 40px);
+    position: relative;
+    /* Layered glow: soft accent halo + deeper shadow */
+    box-shadow:
+      0 0 0 1px rgba(177,59,91,0.25),
+      0 0 40px -8px rgba(235,181,168,0.65),
+      0 0 80px -20px rgba(177,59,91,0.35),
+      0 24px 50px -24px rgba(58,32,64,0.4);
+  }
+  .avatar::after {
+    /* Inner hairline stroke — crisp frame on top of photo */
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid rgba(255,255,255,0.35);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .avatar-ph {
+    width: 100%; height: 100%;
+    background: linear-gradient(160deg, var(--peach) 0%, var(--accent-soft) 50%, var(--accent) 100%);
+    display: grid;
+    place-items: center;
+    color: var(--on-accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  /* Name */
   .name {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    font-size: clamp(56px, min(9.2vw, 14vh), 148px);
-    line-height: 0.88;
-    letter-spacing: -0.035em;
+    font-size: clamp(48px, 7vw, 84px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
     color: var(--primary);
     margin: 0;
   }
   .name .last {
     color: var(--accent);
-    display: block;
+    display: inline-block;
+    margin-left: 0.25em;
   }
 
+  /* Role */
   .role-row {
-    margin-top: clamp(18px, 3vh, 28px);
+    margin-top: clamp(14px, 2vh, 20px);
     display: flex;
-    align-items: baseline;
-    gap: 18px;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
     flex-wrap: wrap;
   }
   .role {
-    font-size: clamp(17px, 1.5vw, 22px);
+    font-size: clamp(16px, 1.5vw, 19px);
     font-weight: 500;
     color: var(--text);
     letter-spacing: -0.01em;
   }
-  .role b { color: var(--accent); font-weight: 600; }
   .sep {
-    width: 8px; height: 8px; background: var(--accent); border-radius: 50%;
+    width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
     display: inline-block;
   }
   .loc {
     font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.04em;
+    font-size: 12px;
+    letter-spacing: 0.08em;
     color: var(--muted);
     text-transform: uppercase;
   }
 
+  /* Bio */
   .bio {
-    margin-top: clamp(16px, 2.2vh, 24px);
-    max-width: 62ch;
-    font-size: clamp(12px, 0.82vw, 13.5px);
-    line-height: 1.55;
+    margin-top: clamp(22px, 3vh, 32px);
+    max-width: 60ch;
+    font-size: 14px;
+    line-height: 1.6;
     color: var(--text);
-    opacity: 0.85;
-    columns: 2;
-    column-gap: 28px;
-    column-rule: 1px solid var(--line);
+    opacity: 0.88;
+    text-align: left;
   }
-  .bio p { margin: 0 0 8px; break-inside: avoid; }
+  .bio p { margin: 0 0 10px; }
   .bio p:last-child { margin-bottom: 0; }
-  @media (max-width: 1100px) { .bio { columns: 1; } }
 
   /* Tags */
   .tags {
-    margin-top: clamp(18px, 2.5vh, 26px);
+    margin-top: clamp(22px, 3vh, 30px);
     display: flex;
     flex-wrap: wrap;
     gap: 7px 8px;
-    max-width: 60ch;
+    justify-content: center;
+    max-width: 560px;
   }
   .tag {
     font-size: 12.5px;
@@ -150,13 +177,13 @@
     letter-spacing: -0.005em;
   }
 
-  /* CTA */
+  /* Actions */
   .actions {
-    margin-top: clamp(26px, 4vh, 42px);
+    margin-top: clamp(28px, 4vh, 40px);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    align-items: center;
+    gap: 14px;
   }
   .cta {
     display: inline-flex;
@@ -168,7 +195,7 @@
     font-weight: 600;
     font-size: 15.5px;
     letter-spacing: -0.005em;
-    padding: 16px 22px 16px 26px;
+    padding: 16px 24px 16px 28px;
     border-radius: 999px;
     transition: transform 0.2s ease, background 0.2s ease;
   }
@@ -178,16 +205,15 @@
     background: var(--on-accent);
     color: var(--accent);
     display: grid; place-items: center;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: color 0.2s ease;
   }
   .cta:hover .arrow { color: var(--primary); }
 
-  /* WhatsApp — subtle by default, soft green button on hover */
   .whatsapp {
     color: var(--muted);
     text-decoration: none;
     font-size: 13.5px;
-    padding: 8px 14px;
+    padding: 8px 16px;
     border-radius: 999px;
     border: 1px solid transparent;
     transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
@@ -209,14 +235,17 @@
     border-bottom-color: rgba(255,255,255,0.5);
   }
 
-  /* Bottom credentials strip */
+  /* Credentials */
   .credentials {
-    margin-top: auto;
-    padding-top: clamp(20px, 3vh, 32px);
+    margin-top: clamp(32px, 5vh, 52px);
+    padding-top: clamp(24px, 4vh, 36px);
+    border-top: 1px solid var(--line);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px 24px;
-    border-top: 1px solid var(--line);
+    gap: 20px 28px;
+    width: 100%;
+    max-width: 640px;
+    text-align: left;
   }
   .cred-item .label {
     font-family: 'DM Mono', monospace;
@@ -227,143 +256,32 @@
     margin-bottom: 6px;
   }
   .cred-item .value {
-    font-size: 13.5px;
+    font-size: 13px;
     font-weight: 500;
     color: var(--text);
-    line-height: 1.35;
+    line-height: 1.4;
   }
   .cred-item .value b { color: var(--primary); font-weight: 600; }
 
-  /* ---------- RIGHT — photo ---------- */
-  .right {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-  }
-
-  .photo-wrap {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    max-height: calc(100vh - clamp(40px, 6vw, 88px));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .photo-bg {
-    position: absolute;
-    inset: 6% 4%;
-    background: var(--accent);
-    border-radius: 999px 999px 36px 36px;
-  }
-
-  .photo-frame {
-    position: relative;
-    width: min(100%, 460px);
-    aspect-ratio: 3/4;
-    max-height: 100%;
-    background: var(--accent-soft);
-    border-radius: 999px 999px 36px 36px;
-    overflow: hidden;
-    transform: translate(-14px, -14px);
-    box-shadow: 0 30px 60px -30px rgba(0,0,0,0.35);
-  }
-  .photo-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* Placeholder shown until real photo loads */
-  .photo-placeholder {
-    width: 100%; height: 100%;
-    background: linear-gradient(160deg, var(--peach) 0%, var(--accent-soft) 50%, var(--accent) 100%);
-    display: grid;
-    place-items: center;
-    color: var(--on-accent);
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    position: relative;
-  }
-  .photo-placeholder::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 50% 40%, rgba(255,255,255,0.35), transparent 60%),
-      radial-gradient(ellipse at 50% 75%, rgba(0,0,0,0.15), transparent 55%);
-  }
-  .photo-placeholder span { position: relative; z-index: 1; opacity: 0.9; }
-
-  /* Small circular avatar for mobile — hidden by default */
-  .avatar-mobile { display: none; }
-
-  /* ---------- Responsive ---------- */
-  @media (max-width: 860px) {
-    .page {
+  /* Responsive */
+  @media (max-width: 640px) {
+    .page { padding: 28px 22px 40px; }
+    .avatar { width: 128px; margin-bottom: 22px; }
+    .name { font-size: clamp(44px, 12vw, 64px); }
+    .name .last { margin-left: 0.2em; }
+    .bio { font-size: 14px; }
+    .credentials {
       grid-template-columns: 1fr;
-      grid-template-rows: auto 1fr;
-      height: auto;
-      min-height: 100vh;
-      padding: 28px 22px 40px;
-      gap: 18px;
+      gap: 16px;
     }
-
-    /* Hide the big photo block on mobile */
-    .right { display: none; }
-
-    /* Show small avatar above the name */
-    .avatar-mobile {
-      display: block;
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      overflow: hidden;
-      background: var(--accent-soft);
-      box-shadow: 0 14px 30px -14px rgba(0,0,0,0.3);
-      margin-bottom: 18px;
-      border: 3px solid var(--bg);
-      outline: 1px solid var(--chip-border);
-    }
-    .avatar-mobile img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .avatar-mobile .ph {
-      width: 100%; height: 100%;
-      background: linear-gradient(160deg, var(--peach), var(--accent));
-      display: grid; place-items: center;
-      color: var(--on-accent);
-      font-family: 'DM Mono', monospace;
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-
-    .left {
-      padding: 0;
-      align-items: flex-start;
-    }
-    .name { font-size: clamp(52px, 14vw, 92px); }
-    .bio { font-size: 14px; columns: 1; }
-    .credentials { grid-template-columns: 1fr; gap: 14px; }
+    .cta { width: 100%; max-width: 320px; justify-content: center; padding: 14px 20px; }
   }
 
-  @media (max-width: 480px) {
-    .page { padding: 24px 18px 36px; }
-    .avatar-mobile { width: 84px; height: 84px; }
-    .name { font-size: clamp(48px, 13vw, 76px); }
-    .role-row { gap: 10px; }
-    .loc { font-size: 12px; }
-    .cta { width: 100%; justify-content: center; padding: 14px 20px; }
+  @media (max-width: 400px) {
+    .name { font-size: clamp(40px, 11vw, 56px); }
+    .avatar { width: 112px; }
+    .role-row { gap: 8px; }
+    .loc { font-size: 11px; }
   }
 </style>
 </head>
@@ -371,94 +289,75 @@
 
   <main class="page">
 
-    <!-- LEFT -->
-    <section class="left">
+    <div class="avatar">
+      <img
+        src="leyla.jpg"
+        alt="Leyla Zaim portresi"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
+      />
+      <div class="avatar-ph" style="display:none;">LZ</div>
+    </div>
 
-      <!-- Small avatar, only visible on mobile -->
-      <div class="avatar-mobile" aria-hidden="true">
-        <img src="assets/leyla.jpg" alt="" onerror="this.remove();this.parentNode.innerHTML='<div class=\'ph\'>LZ</div>';" />
-      </div>
+    <h1 class="name">
+      Leyla<span class="last">Zaim</span>
+    </h1>
 
-      <h1 class="name">
-        Leyla<br>
-        <span class="last">Zaim</span>
-      </h1>
+    <div class="role-row">
+      <div class="role">Uzman Klinik Psikolog</div>
+      <span class="sep"></span>
+      <div class="loc">Nişantaşı · İstanbul</div>
+    </div>
 
-      <div class="role-row">
-        <div class="role">Uzman Klinik Psikolog</div>
-        <span class="sep"></span>
-        <div class="loc">Nişantaşı · İstanbul</div>
-      </div>
+    <div class="bio">
+      <p>Uzman Psikolog Leyla Zaim 2009 yılında İstanbul Bilgi Üniversitesi Psikoloji bölümünden mezun olmuştur. 2012 yılında Doğuş Üniversitesi Klinik Psikoloji yüksek lisansını <em>“Sosyal Kaygı Bozukluğu Üzerine İnceleme ve Tedavi Planı”</em> isimli bitirme projesi ile tamamlamıştır.</p>
+      <p>Mezuniyetinin ardından sosyal hizmetler ve çocuk esirgeme kurumu ile özel bir eğitim kurumunda çalışmıştır. Sonrasında Leap Çalışan Destek Programında ve Moodist Psikiyatri ve Nöroloji hastanesinde klinik psikolog olarak görev almıştır.</p>
+      <p>Yüksek Lisans eğitimi süresince Doğuş Üniversitesi Psikoloji Eğitim Merkezi bünyesinde yetişkin, ergen ve ailelerle psikoterapi çalışmaları yürütmüştür. Davranış Bilimleri Enstitüsü bünyesinde <b>EMDR 1. ve 2. Düzey</b> eğitimini tamamlamıştır. Chris Iveson tarafından verilen <b>Çözüm Odaklı Terapi</b>, Ariel Giarretto tarafından verilen <b>Somatik Deneyimleme Giriş</b> eğitimlerini tamamlamıştır. Gottman Çift Terapisi 1. Düzey, Diyalektik Davranış Terapisi Beceri Eğitimi, Temel Nöropsikoloji, Nefes Teknikleri ve Beden Farkındalığı tamamladığı diğer eğitimler arasındadır.</p>
+    </div>
 
-      <div class="bio">
-        <p>Uzman Psikolog Leyla Zaim 2009 yılında İstanbul Bilgi Üniversitesi Psikoloji bölümünden mezun olmuştur. 2012 yılında Doğuş Üniversitesi Klinik Psikoloji yüksek lisansını <em>“Sosyal Kaygı Bozukluğu Üzerine İnceleme ve Tedavi Planı”</em> isimli bitirme projesi ile tamamlamıştır.</p>
-        <p>Mezuniyetinin ardından sosyal hizmetler ve çocuk esirgeme kurumu ile özel bir eğitim kurumunda çalışmıştır. Sonrasında Leap Çalışan Destek Programında ve Moodist Psikiyatri ve Nöroloji hastanesinde klinik psikolog olarak görev almıştır.</p>
-        <p>Yüksek Lisans eğitimi süresince Doğuş Üniversitesi Psikoloji Eğitim Merkezi bünyesinde yetişkin, ergen ve ailelerle psikoterapi çalışmaları yürütmüştür. Davranış Bilimleri Enstitüsü bünyesinde <b>EMDR 1. ve 2. Düzey</b> eğitimini tamamlamıştır. Chris Iveson tarafından verilen <b>Çözüm Odaklı Terapi</b>, Ariel Giarretto tarafından verilen <b>Somatik Deneyimleme Giriş</b> eğitimlerini tamamlamıştır. Gottman Çift Terapisi 1. Düzey, Diyalektik Davranış Terapisi Beceri Eğitimi, Temel Nöropsikoloji, Nefes Teknikleri ve Beden Farkındalığı tamamladığı diğer eğitimler arasındadır.</p>
-      </div>
+    <div class="tags" aria-label="Çalışma alanları">
+      <span class="tag">Bireysel Terapi</span>
+      <span class="tag">Çocuk &amp; Ergen</span>
+      <span class="tag">Aile Danışmanlığı</span>
+      <span class="tag">Çift Terapisi</span>
+      <span class="tag">Travma &amp; EMDR</span>
+      <span class="tag">Kaygı</span>
+      <span class="tag">Depresyon</span>
+      <span class="tag">Oyun Terapisi</span>
+    </div>
 
-      <div class="tags" aria-label="Çalışma alanları">
-        <span class="tag">Bireysel Terapi</span>
-        <span class="tag">Çocuk &amp; Ergen</span>
-        <span class="tag">Aile Danışmanlığı</span>
-        <span class="tag">Çift Terapisi</span>
-        <span class="tag">Travma &amp; EMDR</span>
-        <span class="tag">Kaygı</span>
-        <span class="tag">Depresyon</span>
-        <span class="tag">Oyun Terapisi</span>
-      </div>
+    <div class="actions">
+      <a class="cta" href="mailto:leylazaim@gmail.com?subject=Randevu%20Talebi">
+        Randevu Al
+        <span class="arrow" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2 6h8M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+      <!-- TODO: WhatsApp numarasını buraya yaz (ör. 905551112233) -->
+      <a class="whatsapp" href="https://wa.me/905555555555" target="_blank" rel="noopener">
+        İsterseniz <b>WhatsApp’tan yazabilirsiniz</b>
+      </a>
+    </div>
 
-      <div class="actions">
-        <!-- TODO: e-posta adresini güncelle -->
-        <a class="cta" href="mailto:leylazaim@gmail.com?subject=Randevu%20Talebi">
-          Randevu Al
-          <span class="arrow" aria-hidden="true">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M2 6h8M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-        </a>
-        <!-- TODO: WhatsApp numarasını uluslararası formatta yaz (ör. 905551112233) -->
-        <a class="whatsapp" href="https://wa.me/905326414967" target="_blank" rel="noopener">
-          İsterseniz <b>WhatsApp’tan yazabilirsiniz</b>
-        </a>
-      </div>
-
-      <div class="credentials">
-        <div class="cred-item">
-          <div class="label">Eğitim</div>
-          <div class="value">
-            <b>İstanbul Bilgi Üniv.</b> — Psikoloji Lisans<br>
-            <b>Doğuş Üniv.</b> — Klinik Psikoloji YL
-          </div>
-        </div>
-        <div class="cred-item">
-          <div class="label">Yaklaşımlar</div>
-          <div class="value">EMDR (1 &amp; 2), Çözüm Odaklı Terapi, Gottman Çift Terapisi, DBT</div>
-        </div>
-        <div class="cred-item">
-          <div class="label">Ek Çalışmalar</div>
-          <div class="value">Somatik Deneyimleme, Nöropsikoloji, Nefes &amp; Beden Farkındalığı</div>
+    <div class="credentials">
+      <div class="cred-item">
+        <div class="label">Eğitim</div>
+        <div class="value">
+          <b>İstanbul Bilgi Üniv.</b> — Psikoloji Lisans<br>
+          <b>Doğuş Üniv.</b> — Klinik Psikoloji YL
         </div>
       </div>
-    </section>
-
-    <!-- RIGHT -->
-    <aside class="right">
-      <div class="photo-wrap">
-        <div class="photo-bg" aria-hidden="true"></div>
-        <div class="photo-frame">
-          <!-- Gerçek fotoğraf gelince placeholder yerini alır -->
-          <img
-            src="leyla.jpg"
-            alt="Leyla Zaim portresi"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
-          />
-          <div class="photo-placeholder" role="img" aria-label="Leyla Zaim portre alanı" style="display:none;">
-            <span>Portre / Placeholder</span>
-          </div>
-        </div>
+      <div class="cred-item">
+        <div class="label">Yaklaşımlar</div>
+        <div class="value">EMDR (1 &amp; 2), Çözüm Odaklı Terapi, Gottman Çift Terapisi, DBT</div>
       </div>
-    </aside>
+      <div class="cred-item">
+        <div class="label">Ek Çalışmalar</div>
+        <div class="value">Somatik Deneyimleme, Nöropsikoloji, Nefes &amp; Beden Farkındalığı</div>
+      </div>
+    </div>
+
   </main>
 
 </body>
